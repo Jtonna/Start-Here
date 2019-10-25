@@ -1,9 +1,11 @@
 import React from 'react';
+import NavagationBar from "./components/Shared/NavagationBar.jsx"
 
 function App() {
   return (
     <div className="App">
-      App Main Page
+      <NavagationBar />
+      Main App Lives Here
     </div>
   );
 }
