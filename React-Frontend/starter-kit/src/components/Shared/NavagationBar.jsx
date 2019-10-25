@@ -7,6 +7,7 @@ const NavagationBar = () => {
 			Navagation Bar lives here. If youre logged in it will show something and if youre logged out youll see some buttons to log-in
 			<Link to="/"> home </Link>
 			<Link to="/login"> login </Link>
+			<Link to="/register"> register </Link>
 		</div>
 	);
 }
