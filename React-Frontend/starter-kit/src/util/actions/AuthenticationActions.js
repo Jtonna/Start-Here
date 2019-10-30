@@ -14,11 +14,25 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 // We are creating an action for loggin in, it takes in data (creds) and uses dispatch
 export const login = (creds) => dispatch => {
-	// dispatch is
-	// type: login_start means that
+	// dispatch does ___
 	dispatch({
 		type: LOGIN_START,
 	})
 
-	
+	// Here we will send a post request, do something with the response & setup a catch if the request fails for whatever reason
+	return axios
+		.post(`${CTOS_URL}/login`, creds)
+		.then(res => {
+			localStorage.setItem('token', res.data.token);
+			dispatch({
+				type: LOGIN_SUCCESS,
+				payload: res.data,
+			})
+		})
+		.catch(error =>{
+			console.log(error)
+			dispatch({
+				type: LOGIN_FAILURE,
+			})
+		})
 }
