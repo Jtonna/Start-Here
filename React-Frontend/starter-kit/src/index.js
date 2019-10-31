@@ -5,20 +5,24 @@ import * as serviceWorker from './serviceWorker';
 
 // We are going to wrap our app in a Provider to allow our Redux-based store to have access to all of the child components.
 // https://react-redux.js.org/api/provider
-import Provider from 'react-redux';
+import {Provider} from 'react-redux';
 
 // We are going to use some middleware 'logger' and 'thunk' to
 // https://github.com/LogRocket/redux-logger/blob/v2.0.4/README.md
 // https://github.com/reduxjs/redux-thunk/blob/v2.3.0/README.md
-import {thunk} from 'redux-thunk';
+import thunk from 'redux-thunk';
 import {logger} from 'redux-logger';
+
+// we are importing createStore and applyMiddleWare for do as the name's suggests
+import {createStore, applyMiddleware} from 'redux';
 
 // We need our 'rootReducer' to gain access to the list of reducers we will use in the app
 // https://redux.js.org/basics/reducers
+import rootReducer from './util/reducers/RootReducer';
 
 
 // Here we initialize our store, use to 'rootReducer' & apply our middleware 'logger' & 'thunk'
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
 	<Provider store={store}>

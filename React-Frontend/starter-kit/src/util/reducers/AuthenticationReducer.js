@@ -24,7 +24,7 @@ const initialState = {
 export const AuthenticationReducer = (state = initialState, action) => {
 	switch(action.type){
 		// Here we define what we do based upon certian cases
-		// We should always make a copy of the existing state (using a spread operator) because ___
+		// We should always make a copy of the existing state (using a spread operator) so we dont re-write the state and lose data (other key:value pairs or even entire objects)
 
 		// Login Cases
 		case LOGIN_START:

@@ -3,8 +3,8 @@
 import {combineReducers} from 'redux';
 
 // Import all of the reducers here
-import AuthenticationReducer from './AuthenticationReducer';
+import {AuthenticationReducer} from './AuthenticationReducer';
 
 export default combineReducers({
-	user: AuthenticationReducer,
+	AuthenticationReducer
 })
