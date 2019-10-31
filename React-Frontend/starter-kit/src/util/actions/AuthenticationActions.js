@@ -5,15 +5,20 @@ import axios from 'axios';
 // We are going to need AxiosWithAuth to send headers & tokens as well as our URL for Connecting To Online Services (CTOS)
 import {AxiosWithAuth, CTOS_URL} from '../AxiosWithAuth';
 
-// Here we are creating 3 Actions, Login, Registration & Logging
+// for modularity we are going to define some paths for logging in & registration
+// https://doepud.co.uk/blog/anatomy-of-a-url
+const login_path = "/login";
+const registration_path = "/register";
+
+// In this file we have 3 Actions, Login, Registration & Logging Out
 
 // Here we define the name of the actions for our login Action
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
-// We are creating an action for loggin in, it takes in data (creds) and uses dispatch
-export const login = (creds) => dispatch => {
+// We are creating an action for logging in, it takes in data (creds) and uses dispatch to pass data to the reducer & save it in the application state
+export const login = (creds) => (dispatch) => {
 	// dispatch does ___
 	dispatch({
 		type: LOGIN_START,
@@ -21,7 +26,8 @@ export const login = (creds) => dispatch => {
 
 	// Here we will send a post request, do something with the response & setup a catch if the request fails for whatever reason
 	return axios
-		.post(`${CTOS_URL}/login`, creds)
+		// This will create a url like this https://something.com/login
+		.post(`${CTOS_URL+login_path}`, creds)
 		.then(res => {
 			localStorage.setItem('token', res.data.token);
 			dispatch({
@@ -30,9 +36,38 @@ export const login = (creds) => dispatch => {
 			})
 		})
 		.catch(error =>{
-			console.log(error)
+			console.log('login error: ', error)
 			dispatch({
 				type: LOGIN_FAILURE,
+			})
+		})
+}
+
+// Registration Actions Names
+export const REGISTER_START = 'REGISTER_START'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAILURE = 'REGISTER_FAILURE'
+
+// Registration Action
+export const registration = (creds) => (dispatch) => {
+	dispatch ({
+		type: REGISTER_START,
+	})
+
+	return axios
+		.post(`${CTOS_URL+registration_path}`, creds)
+		.then( res => {
+			// If registration was succesful we set a token so the user can be logged in with it
+			localStorage.setItem("token", res.data.token);
+			dispatch({
+				type: REGISTER_SUCCESS,
+				payload: res.data,
+			})
+		})
+		.catch(err => {
+			console.log('registration error:', err)
+			dispatch({
+				type: REGISTER_FAILURE
 			})
 		})
 }
