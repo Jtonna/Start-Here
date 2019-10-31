@@ -7,12 +7,12 @@ import {AxiosWithAuth, CTOS_URL} from '../AxiosWithAuth';
 
 // for modularity we are going to define some paths for logging in & registration
 // https://doepud.co.uk/blog/anatomy-of-a-url
-const login_path = "/login";
-const registration_path = "/register";
+const login_path = '/login';
+const registration_path = '/register';
 
 // In this file we have 3 Actions, Login, Registration & Logging Out
 
-// Here we define the name of the actions for our login Action
+// Here we define the name of the actions for our login Action for Reducer
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
@@ -43,7 +43,7 @@ export const login = (creds) => (dispatch) => {
 		})
 }
 
-// Registration Actions Names
+// Registration Actions Names for Reducer
 export const REGISTER_START = 'REGISTER_START'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
@@ -58,7 +58,7 @@ export const registration = (creds) => (dispatch) => {
 		.post(`${CTOS_URL+registration_path}`, creds)
 		.then( res => {
 			// If registration was succesful we set a token so the user can be logged in with it
-			localStorage.setItem("token", res.data.token);
+			localStorage.setItem('token', res.data.token);
 			dispatch({
 				type: REGISTER_SUCCESS,
 				payload: res.data,
@@ -70,4 +70,16 @@ export const registration = (creds) => (dispatch) => {
 				type: REGISTER_FAILURE
 			})
 		})
+}
+
+// Logout Action Name for Reducer
+export const LOGOUT = 'LOGOUT';
+
+// This clears local storage and dispatches the LOGOUT action
+// https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
+export const logout = () => (dispatch) => {
+	localStorage.clear();
+	dispatch({
+		type: LOGOUT,
+	})
 }
