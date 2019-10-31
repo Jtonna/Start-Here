@@ -22,7 +22,9 @@ import rootReducer from './util/reducers/RootReducer';
 
 
 // Here we initialize our store, use to 'rootReducer' & apply our middleware 'logger' & 'thunk'
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+// note remove the following line from the createStore obj in production
+// && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(rootReducer, applyMiddleware(thunk, logger) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
 	<Provider store={store}>
