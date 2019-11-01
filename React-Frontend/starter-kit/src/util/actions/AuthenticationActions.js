@@ -5,6 +5,9 @@ import axios from 'axios';
 // We are going to need AxiosWithAuth to send headers & tokens as well as our URL for Connecting To Online Services (CTOS)
 import {AxiosWithAuth, CTOS_URL} from '../AxiosWithAuth';
 
+// Heres some information describing what actions are
+// https://redux.js.org/basics/actions
+
 // for modularity we are going to define some paths for logging in & registration
 // https://doepud.co.uk/blog/anatomy-of-a-url
 const login_path = '/login';
@@ -12,14 +15,13 @@ const registration_path = '/register';
 
 // In this file we have 3 Actions, Login, Registration & Logging Out
 
-// Here we define the name of the actions for our login Action for Reducer
+// Here we define the name of the actions for our login Action for Reducer which will be used for Dispatches
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 // We are creating an action for logging in, it takes in data (creds) and uses dispatch to pass data to the reducer & save it in the application state
 export const login = (creds) => (dispatch) => {
-	// dispatch does ___
 	dispatch({
 		type: LOGIN_START,
 	})
