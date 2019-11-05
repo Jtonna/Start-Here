@@ -22,6 +22,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 // We are creating an action for logging in, it takes in data (creds) and uses dispatch to pass data to the reducer & save it in the application state
 export const login = (creds) => (dispatch) => {
+	// dispatch gets sent to the reducer that updates the state
 	dispatch({
 		type: LOGIN_START,
 	})
