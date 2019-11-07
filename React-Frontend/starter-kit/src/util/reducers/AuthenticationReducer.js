@@ -18,6 +18,9 @@ const initialState = {
 	registering: false,
 	registered: false,
 	registerationError: false,
+
+	// Initial State for holding user credentials, account information and anything else
+	user: {},
 }
 
 // We need to set the state first & we do that with initialState. We also are going to be using actions to update said state.
