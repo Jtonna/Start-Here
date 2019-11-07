@@ -22,7 +22,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 // We are creating an action for logging in, it takes in data (creds) and uses dispatch to pass data to the reducer & save it in the application state
 export const login = (creds) => (dispatch) => {
-	// dispatch gets sent to the reducer that updates the state
+	console.log('hits the login action')
+	// dispatch gets sent to the reducer that updates the state (basically stating that the LOGIN is Starting)
 	dispatch({
 		type: LOGIN_START,
 	})
@@ -31,12 +32,13 @@ export const login = (creds) => (dispatch) => {
 	return axios
 		// This will create a url like this https://something.com/login
 		.post(`${CTOS_URL+login_path}`, creds)
-		.then(res => {
-			localStorage.setItem('token', res.data.token);
+		.then(response => {
+			localStorage.setItem('token', response.data.token);
 			dispatch({
 				type: LOGIN_SUCCESS,
-				payload: res.data,
+				payload: response.data,
 			})
+			localStorage.setItem('user', response.data.artistId)
 		})
 		.catch(error =>{
 			console.log('login error: ', error)
@@ -59,12 +61,12 @@ export const registration = (creds) => (dispatch) => {
 
 	return axios
 		.post(`${CTOS_URL+registration_path}`, creds)
-		.then( res => {
+		.then( response => {
 			// If registration was succesful we set a token so the user can be logged in with it
-			localStorage.setItem('token', res.data.token);
+			localStorage.setItem('token', response.data.token);
 			dispatch({
 				type: REGISTER_SUCCESS,
-				payload: res.data,
+				payload: response.data,
 			})
 		})
 		.catch(err => {
