@@ -27,6 +27,25 @@ class Login extends Component {
 		})
 	}
 
+	handleEmailOrUsername = (e) => {
+		// This basically checks to see if the value for emailOrUsername (in local state) contains "@", if it does it does something
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+		if(Object.values(this.state.userLoginInfo.emailOrUsername).includes("@") === true ){
+			// since the value contains an "@" we need to return email & password
+			return {
+				email: this.state.userLoginInfo.emailOrUsername,
+				password: this.state.userLoginInfo.password
+			}
+		} else {
+			// if not we return username & password
+			return{
+				username: this.state.userLoginInfo.emailOrUsername,
+				password: this.state.userLoginInfo.password,
+			}
+		}
+	}
+
 
 	render(){
 		return (
@@ -45,14 +64,10 @@ class Login extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	// To make it easier on the backend we are going to loop through the state object's emailOrUsername key:value pair (but only the value)
-	// The time complexity is 
-	// if this.state.userLoginInfo.emailOrUsername contains "@"
-	// return email & password
-	// else
-	// return username & password
-}
+const mapStateToProps = (state) => ({
+	loggingIn: state.loggingIn,
+	error: state.loggingIn,
+})
 
 
 export default connect(mapStateToProps, {})(Login);
