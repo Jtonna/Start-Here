@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 // We are going to need AxiosWithAuth to send headers & tokens as well as our URL for Connecting To Online Services (CTOS)
-import {AxiosWithAuth, CTOS_URL} from '../AxiosWithAuth';
+import {CTOS_URL} from '../AxiosWithAuth';
 
 // Heres some information describing what actions are
 // https://redux.js.org/basics/actions
