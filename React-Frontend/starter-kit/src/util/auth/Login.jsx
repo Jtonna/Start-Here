@@ -25,20 +25,9 @@ class Login extends Component {
 				[e.target.name]: e.target.value
 			}
 		})
-
-				// This basically checks to see if the value for emailOrUsername (in local state) contains "@", if it does it does something
-		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
-		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
-		if(Object.values(this.state.userLoginInfo.emailOrUsername).includes("@") === true ){
-			// since the value contains an "@" we need to return email & password
-			console.log(' YA SHIT IS AN EMAIL ')
-		} else {
-			// if not we return username & password
-			console.log('looks like a username to me')
-		}
 	}
 
-	handleEmailOrUsername = (e) => {
+	handleEmailOrUsername = () => {
 		// This basically checks to see if the value for emailOrUsername (in local state) contains "@", if it does it does something
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
@@ -56,7 +45,6 @@ class Login extends Component {
 			}
 		}
 	}
-
 
 	render(){
 		return (
