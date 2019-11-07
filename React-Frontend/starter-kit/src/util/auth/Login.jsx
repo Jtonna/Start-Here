@@ -55,7 +55,7 @@ class Login extends Component {
 		// This basically prevents the submit button from re-freshing the page
 		e.preventDefault();
 		this.props.login(this.handleEmailOrUsername()).then( () => {
-			this.props.history.push('/')
+			this.props.history.push('/RouteChooser')
 		})
 	}
 
