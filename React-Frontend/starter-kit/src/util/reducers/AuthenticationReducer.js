@@ -51,6 +51,13 @@ export const AuthenticationReducer = (state = initialState, action) => {
 				loggedIn: false,
 			}
 		
+		// Logout Case's
+		case LOGOUT:
+			return {
+				...state,
+				loggedIn: false,
+			}
+		
 		// Registration Cases
 		case REGISTER_START:
 			return {
