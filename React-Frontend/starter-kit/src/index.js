@@ -13,18 +13,19 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {logger} from 'redux-logger';
 
-// we are importing createStore and applyMiddleWare for do as the name's suggests
-import {createStore, applyMiddleware} from 'redux';
+// we are importing createStore and applyMiddleWare for setting up the store with middleware. Compose is for the devtools extension
+import {createStore, applyMiddleware, compose} from 'redux';
 
 // We need our 'rootReducer' to gain access to the list of reducers we will use in the app
 // https://redux.js.org/basics/reducers
 import rootReducer from './util/reducers/RootReducer';
 
+// This enables the devtools
+// https://github.com/zalmoxisus/redux-devtools-extension/tree/v2.15.0#12-advanced-store-setup
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Here we initialize our store, use to 'rootReducer' & apply our middleware 'logger' & 'thunk'
-// note remove the following line from the createStore obj in production
-// && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = createStore(rootReducer, applyMiddleware(thunk, logger) && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)))
 
 ReactDOM.render(
 	<Provider store={store}>
