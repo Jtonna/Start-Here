@@ -20,7 +20,7 @@ class Register extends Component {
 				// https://github.com/tc39/proposal-object-rest-spread
 				// [e.target.name] is going to get the 'name' of the field we are entering text from
 				// e.target.value gets the value each time we enter in data
-				...this.state.userLoginInfo,
+				...this.state.userRegistrationInfo,
 				[e.target.name]: e.target.value
 			}
 		})
@@ -37,13 +37,18 @@ class Register extends Component {
 		return (
 			<div className="registration">
 				<form className="registration_form" onSubmit={this.register}>
-					<input type="firstname" name="fname" id="" onChange={null} />
-					<input type="lastname" name="lname" id="" onChange={null} />
-					<input type="username" name="username" id="" onChange={null} />
-					<input type="email" name="email" id="" onChange={null} />
-					<input type="password" name="password" id="" onChange={null} />
-					<input type="submit" name="submit" id="" onChange={null} />
+					<input type="firstname" name="fname" id="" onChange={this.handleInput} />
+					<input type="lastname" name="lname" id="" onChange={this.handleInput} />
+					<input type="username" name="username" id="" onChange={this.handleInput} />
+					<input type="email" name="email" id="" onChange={this.handleInput} />
+					<input type="password" name="password" id="" onChange={this.handleInput} />
+					<input type="submit" name="submit" id="" onChange={this.register} />
 				</form>
+				<h3>{this.state.userRegistrationInfo.fname}</h3>
+				<h3>{this.state.userRegistrationInfo.lname}</h3>
+				<h3>{this.state.userRegistrationInfo.username}</h3>
+				<h3>{this.state.userRegistrationInfo.email}</h3>
+				<h3>{this.state.userRegistrationInfo.password}</h3>
 			</div>
 		);
 	}
