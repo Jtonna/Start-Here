@@ -3,8 +3,8 @@ import {Route} from "react-router-dom";
 
 // Components for Public Routes (No Auth)
 import PublicIndex from ".././components/public/PublicIndex";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
 
 // Components for User Routes (Auth)
 // Stuff goes here
