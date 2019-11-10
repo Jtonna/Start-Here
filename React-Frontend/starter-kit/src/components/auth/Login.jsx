@@ -6,7 +6,8 @@ import {login} from '../../util/actions/AuthenticationActions';
 // This Login component handles user input and saves it to a local state, on submit it will update the global redux state tree which handles the API call
 
 class Login extends Component {
-	// Here we set a local state to be used onSubmit
+	
+	// Local state that get's set by the event handler and used on submit
 	state = {
 		userLoginInfo: {
 			emailOrUsername: '',
@@ -54,7 +55,8 @@ class Login extends Component {
 	login = (e) => {
 		// This basically prevents the submit button from re-freshing the page
 		e.preventDefault();
-		this.props.login(this.handleEmailOrUsername()).then( () => {
+		this.props.login(this.handleEmailOrUsername())
+		.then( () => {
 			this.props.history.push('/RouteChooser')
 		})
 	}
