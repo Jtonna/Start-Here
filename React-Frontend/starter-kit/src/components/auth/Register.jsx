@@ -35,8 +35,15 @@ class Register extends Component {
 
 	render() { 
 		return (
-			<div className="registration_form">
-				<form onSubmit={this.register}></form>
+			<div className="registration">
+				<form className="registration_form" onSubmit={this.register}>
+					<input type="firstname" name="fname" id="" onChange={null} />
+					<input type="lastname" name="lname" id="" onChange={null} />
+					<input type="username" name="username" id="" onChange={null} />
+					<input type="email" name="email" id="" onChange={null} />
+					<input type="password" name="password" id="" onChange={null} />
+					<input type="submit" name="submit" id="" onChange={null} />
+				</form>
 			</div>
 		);
 	}
