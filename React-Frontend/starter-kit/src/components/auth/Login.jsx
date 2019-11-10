@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {login} from '../actions/AuthenticationActions';
+import {login} from '../../util/actions/AuthenticationActions';
 
 // This Login component handles user input and saves it to a local state, on submit it will update the global redux state tree which handles the API call
 
