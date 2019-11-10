@@ -69,7 +69,6 @@ class Login extends Component {
 					<input type="text" name="emailOrUsername" id="" onChange={this.handleInput} />
 					<input type="password" name="password" id="" onChange={this.handleInput} />
 					<input type="submit" name="submit" id="" onClick={this.login} />
-
 				</form>
 				<h3>{this.state.userLoginInfo.emailOrUsername}</h3>
 				<h3>{this.state.userLoginInfo.password}</h3>
