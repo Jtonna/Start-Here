@@ -39,6 +39,7 @@ export const AuthenticationReducer = (state = initialState, action) => {
 		
 		case LOGIN_SUCCESS:
 			return {
+				...state,
 				loggingIn: false,
 				loggedIn: true,
 				loginError: '',
