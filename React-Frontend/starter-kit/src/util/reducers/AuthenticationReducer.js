@@ -33,7 +33,7 @@ export const AuthenticationReducer = (state = initialState, action) => {
 		case LOGIN_START:
 			return {
 				...state,
-				loggedIn: true,
+				loggingIn: true,
 				loginError: '',
 			}
 		
@@ -50,6 +50,7 @@ export const AuthenticationReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loggedIn: false,
+				loginError: action.payload,
 			}
 		
 		// Logout Case's

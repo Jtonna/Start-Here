@@ -20,9 +20,10 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
-// We are creating an action for logging in, it takes in data (creds) and uses dispatch to pass data to the reducer & save it in the application state
+// We are creating an action for logging in, it takes in data (creds) and sends it to the server for validation. The server returns a 'response'
 export const login = (creds) => (dispatch) => {
-	console.log('hits the login action')
+	// console.log('hits the login action & passes the credentials to the server for a response')
+	// console.log(creds)
 	// dispatch gets sent to the reducer that updates the state (basically stating that the LOGIN is Starting)
 	dispatch({
 		type: LOGIN_START,
@@ -55,6 +56,8 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE'
 
 // Registration Action
 export const registration = (creds) => (dispatch) => {
+	// console.log(creds)
+
 	dispatch ({
 		type: REGISTER_START,
 	})
