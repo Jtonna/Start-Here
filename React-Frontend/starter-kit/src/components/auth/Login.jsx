@@ -52,9 +52,10 @@ class Login extends Component {
 		}
 	}
 
-	login = (e) => {
+	handleLogin = (e) => {
 		// This basically prevents the submit button from re-freshing the page
 		e.preventDefault();
+		//this.props.(whatever action from redux we need to use)
 		this.props.login(this.handleEmailOrUsername())
 		.then( () => {
 			this.props.history.push('/RouteChooser')
@@ -65,10 +66,10 @@ class Login extends Component {
 		return (
 			<div className="login">
 				Login Page lives here
-				<form className="login_form" onSubmit={this.login} >
-					<input type="text" name="emailOrUsername" id="" onChange={this.handleInput} />
-					<input type="password" name="password" id="" onChange={this.handleInput} />
-					<input type="submit" name="submit" id="" onClick={this.login} />
+				<form className="login_form" onSubmit={this.handleLogin} >
+					<input type="text" name="emailOrUsername" id="login_emailOrUsername" onChange={this.handleInput} />
+					<input type="password" name="password" id="login_password" onChange={this.handleInput} />
+					<input type="submit" name="submit" id="login_submit" onClick={this.handleLogin} />
 				</form>
 				<h3>{this.state.userLoginInfo.emailOrUsername}</h3>
 				<h3>{this.state.userLoginInfo.password}</h3>
@@ -77,10 +78,11 @@ class Login extends Component {
 	}
 }
 
+// this will map the state to props (redux store)
 const mapStateToProps = (state) => ({
 	loggingIn: state.loggingIn,
 	error: state.loggingIn,
 })
 
-
+// connect (state to props), action's, then export the component
 export default connect(mapStateToProps, {login})(Login);
