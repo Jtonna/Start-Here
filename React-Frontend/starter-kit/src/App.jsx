@@ -9,6 +9,25 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {ListOfPublicRoutes} from './util/ListOfRoutes.js';
 
 function App() {
+
+  const tokenChecker = () => {
+
+    // If the user has a token
+    //     ping the server (CTOS URL)
+    //     save the response in a variable
+    //     if the response is true 
+    //         create a variable isTokenValid
+    //         set isValid to True
+    //     else
+    //         create a variable isTokenValid
+    //         set isValid to false
+    //
+    // return isTokenValid
+
+    const isTokenValid = True
+    return isTokenValid
+  }
+
   return (
     <Router>
       <div className="App">
@@ -16,6 +35,10 @@ function App() {
         Main App Lives Here
         {/* We will eventually check to see if the user is authenticated, if so they get user routes, if they are an admin, they get admin routes. else they get public*/}
         <ListOfPublicRoutes />
+
+        {
+          tokenChecker ? (<div>isValid is true</div>):(<div> isValid is false</div>)
+        }
       </div>
     </Router>
   );
